@@ -1,0 +1,48 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install
+      - run: npm run build
+      - run: npm run type-check
+      - run: npm run coverage
+      - run: cp -rp coverage/lcov-report ./dist
+      - name: Create Coverage Badges
+        uses: jaywcjlove/coverage-badges-cli@main
+        with:
+          source: coverage/coverage-summary.json
+          output: dist/badges.svg
+      - name: Create Tag
+        id: create_tag
+        uses: jaywcjlove/create-tag-action@main
+        with:
+          package-path: ./package.json
+      - name: get tag version
+        id: tag_version
+        uses: jaywcjlove/changelog-generator@main
+      # - run: npm run doc
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          publish_branch: gh-pages
+          commit_message: 'Deploy to GitHub Pages'
+      - run: npm publish --access public
+        name: 📦 @wyxin/baijiaxing publish to NPM
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
