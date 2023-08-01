@@ -28,6 +28,8 @@ jobs:
         uses: jaywcjlove/create-tag-action@main
         with:
           package-path: package.json
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: get tag version
         id: tag_version
         uses: jaywcjlove/changelog-generator@main
