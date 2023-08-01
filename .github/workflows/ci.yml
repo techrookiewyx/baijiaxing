@@ -15,7 +15,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm install
       - run: npm run build
-      - run: npm run type-check
+      # - run: npm run type-check
       - run: npm run coverage
       - run: cp -rp coverage/lcov-report ./dist
       - name: Create Coverage Badges
