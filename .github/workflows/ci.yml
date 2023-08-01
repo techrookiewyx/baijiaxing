@@ -27,9 +27,8 @@ jobs:
         id: create_tag
         uses: jaywcjlove/create-tag-action@main
         with:
-          package-path: package.json
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          package-path: ./package.json
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: get tag version
         id: tag_version
         uses: jaywcjlove/changelog-generator@main
