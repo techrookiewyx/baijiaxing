@@ -1,0 +1,56 @@
+{
+  "name": "@wyxin/baijiaxing",
+  "version": "0.0.1",
+  "description": "Hundred Family Surnames of Chinese",
+  "type": "module",
+  "exports": "./lib/name.js",
+  "homepage": "https://techrookiewyx.github.io/baijiaxing",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/techrookiewyx/baijiaxing"
+  },
+  "author": "techrookiewyx",
+  "license": "MIT",
+  "files": [
+    "src/name.js",
+    "lib",
+    "!lib/index.js"
+  ],
+  "keywords": [
+    "百家姓",
+    "baijiaxing",
+    "bjx",
+    "surnames"
+  ],
+  "scripts": {
+    "prepack": "husky install && npm run build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "tsbb build",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage",
+    "prettier": "prettier --write \"**/*.{js,json}\""
+  },
+  "engines": {
+    "node": ">=14.16"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/lib/"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,json}": "prettier --write"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "prettier": "^3.0.0",
+    "tsbb": "^4.1.14",
+    "react-scripts": "5.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
