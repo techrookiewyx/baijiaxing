@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/baijiaxing/static/css/main.dfe84334.css",
+    "main.js": "/baijiaxing/static/js/main.49153042.js",
+    "index.html": "/baijiaxing/index.html",
+    "main.dfe84334.css.map": "/baijiaxing/static/css/main.dfe84334.css.map",
+    "main.49153042.js.map": "/baijiaxing/static/js/main.49153042.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dfe84334.css",
+    "static/js/main.49153042.js"
+  ]
+}
