@@ -58,6 +58,8 @@ jobs:
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Create gh-pages branch
+        run: git branch gh-pages
       - name: Add to gh-pages
         run: |
           mkdir temp
