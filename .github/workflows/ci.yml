@@ -46,13 +46,13 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com'
           publish_branch: gh-pages
           commit_message: 'Deploy to GitHub Pages'
-      - name: Generate Changelog
-        id: changelog
-        uses: jaywcjlove/changelog-generator@main
-        with:
-          head-ref: ${{steps.create_tag.outputs.version}}
-          filter-author: (renovate-bot|Renovate Bot)
-          filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
+      # - name: Generate Changelog
+      #   id: changelog
+      #   uses: jaywcjlove/changelog-generator@main
+      #   with:
+      #     head-ref: ${{steps.create_tag.outputs.version}}
+      #     filter-author: (renovate-bot|Renovate Bot)
+      #     filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
       - run: npm publish --access public
         name: 📦 @wyxin/baijiaxing publish to NPM
         continue-on-error: true
