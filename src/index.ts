@@ -567,7 +567,7 @@ export const name = [
   "家",
   "姓",
   "终",
-];
+] as const;
 
 export const py = [
   "zhào",
@@ -1138,7 +1138,7 @@ export const py = [
   "jiā",
   "xìng",
   "zhōng",
-];
+] as const;
 
 export const pinxie = [
   "zhao",
@@ -1708,5 +1708,7 @@ export const pinxie = [
   "bai",
   "jia",
   "xing",
-  "zong"
-];
+  "zong",
+] as const;
+
+export default name;

@@ -1,4 +1,4 @@
-import { name, py, pinxie } from '../name';
+import { name, py, pinxie } from '../';
 
 it('=> name.length', () => expect(name.length).toBe(568));
 it('=> pinxie.length', () => expect(pinxie.length).toBe(568));
