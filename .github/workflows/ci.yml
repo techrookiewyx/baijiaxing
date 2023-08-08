@@ -58,18 +58,15 @@ jobs:
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Set git user identity
-        run: |
-          git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
-          git config --global user.name "${{ secrets.GIT_USER_NAME }}"
-      - name: Create gh-pages branch
-        run: git branch gh-pages
-      - name: Add to gh-pages
-        run: |
-          mkdir temp
-          cp -p ./dist/badges.svg temp/
-          git checkout gh-pages
-          cp -r temp/* .
-          git add .
-          git commit -m "Update gh-pages"
-          git push origin gh-pages
+      # - name: Add to gh-pages
+      #   run: |
+      #     git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
+      #     git config --global user.name "${{ secrets.GIT_USER_NAME }}"
+      #     git branch gh-pages
+      #     mkdir temp
+      #     cp -p ./dist/badges.svg temp/
+      #     git checkout gh-pages
+      #     cp -r temp/badges.svg .
+      #     git add .
+      #     git commit -m "Update gh-pages"
+      #     git push origin gh-pages
