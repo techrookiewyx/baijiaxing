@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/baijiaxing/static/css/main.dfe84334.css",
-    "main.js": "/baijiaxing/static/js/main.49153042.js",
+    "main.css": "/baijiaxing/static/css/main.c6c3ba9d.css",
+    "main.js": "/baijiaxing/static/js/main.3f02e92c.js",
     "index.html": "/baijiaxing/index.html",
-    "main.dfe84334.css.map": "/baijiaxing/static/css/main.dfe84334.css.map",
-    "main.49153042.js.map": "/baijiaxing/static/js/main.49153042.js.map"
+    "main.c6c3ba9d.css.map": "/baijiaxing/static/css/main.c6c3ba9d.css.map",
+    "main.3f02e92c.js.map": "/baijiaxing/static/js/main.3f02e92c.js.map"
   },
   "entrypoints": [
-    "static/css/main.dfe84334.css",
-    "static/js/main.49153042.js"
+    "static/css/main.c6c3ba9d.css",
+    "static/js/main.3f02e92c.js"
   ]
 }
