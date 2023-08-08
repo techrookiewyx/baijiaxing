@@ -1,6 +1,6 @@
 {
   "name": "@wyxin/baijiaxing",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Hundred Family Surnames of Chinese",
   "type": "module",
   "types": "./lib/index.d.ts",
@@ -14,7 +14,10 @@
   "license": "MIT",
   "files": [
     "src/index.ts",
-    "lib"
+    "lib",
+    "name.json",
+    "py.json",
+    "pinxie.jspn"
   ],
   "keywords": [
     "百家姓",
