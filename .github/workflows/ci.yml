@@ -17,18 +17,19 @@ jobs:
       - run: npm run build
       # - run: npm run type-check
       - run: npm run coverage
+      - run: npm run doc
       - run: cp -rp coverage/lcov-report ./dist
       - name: Create Coverage Badges
         uses: jaywcjlove/coverage-badges-cli@main
         with:
-          source: coverage/coverage-summary.json
-          output: dist/badges.svg
+          output: website/build/badges.svg
+      - run: cp -rp coverage website/build
       - name: Create Tag
         id: create_tag
         uses: jaywcjlove/create-tag-action@main
         if: env.previous_tag
         with:
-          package-path: ./package.json
+          package-path: ./core/package.json
       # - name: get tag version
       #   id: tag_version
       #   uses: jaywcjlove/changelog-generator@main
@@ -37,15 +38,15 @@ jobs:
       #     filter-author: (renovate-bot|Renovate Bot)
       #     filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
       # - run: npm run doc
-      # - name: Deploy
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./dist
-      #     user_name: 'github-actions[bot]'
-      #     user_email: 'github-actions[bot]@users.noreply.github.com'
-      #     publish_branch: gh-pages
-      #     commit_message: 'Deploy to GitHub Pages'
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website/build
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          publish_branch: gh-pages
+          commit_message: 'Deploy to GitHub Pages'
       # - name: Generate Changelog
       #   id: changelog
       #   uses: jaywcjlove/changelog-generator@main
@@ -55,6 +56,7 @@ jobs:
       #     filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
       - run: npm publish --access public
         name: 📦 @wyxin/baijiaxing publish to NPM
+        working-directory: core
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

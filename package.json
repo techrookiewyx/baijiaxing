@@ -1,58 +1,63 @@
 {
-  "name": "@wyxin/baijiaxing",
-  "version": "0.0.3",
-  "description": "Hundred Family Surnames of Chinese",
-  "type": "module",
-  "types": "./lib/index.d.ts",
-  "exports": {
-    "." :"./lib/index.js",
-    "./README.md": "./README.md"
-  },
-  "homepage": "https://techrookiewyx.github.io/baijiaxing",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/techrookiewyx/baijiaxing"
-  },
-  "author": "techrookiewyx",
-  "license": "MIT",
-  "files": [
-    "src/index.ts",
-    "lib",
-    "name.json",
-    "py.json",
-    "pinxie.jspn"
-  ],
-  "keywords": [
-    "百家姓",
-    "baijiaxing",
-    "bjx",
-    "surnames"
-  ],
+  "private": true,
   "scripts": {
-    "prepack": "husky install && npm run build",
-    "start": "tsbb watch",
-    "build": "tsbb build",
-    "type-check": "tsc --noEmit",
+    "⬇️⬇️⬇️⬇️⬇️ package ⬇️⬇️⬇️⬇️⬇️": "▼▼▼▼▼ package ▼▼▼▼▼",
+    "build": "lerna exec --scope @wyxin/baijiaxing -- tsbb build",
+    "watch": "lerna exec \"tsbb watch src/*.ts --use-babel \" --scope @wyxin/baijiaxing",
+    "bundle": "lerna exec --scope @wyxin/baijiaxing -- ncc build src/index.tsx --target web --filename dist",
+    "bundle:min": "lerna exec --scope @wyxin/baijiaxing -- ncc build src/index.tsx --target web --filename dist --minify",
+    "⬆️⬆️⬆️⬆️⬆️ package ⬆️⬆️⬆️⬆️⬆️": "▲▲▲▲▲ package ▲▲▲▲▲",
+    "start": "lerna exec --scope website -- npm run start",
+    "doc": "lerna exec --scope website -- npm run build",
+    "bootstrap": "lerna bootstrap",
+    "hoist": "lerna bootstrap --hoist",
     "test": "tsbb test",
-    "coverage": "tsbb test --coverage",
-    "prettier": "prettier --write \"**/*.{js,ts,json}\""
-  },
-  "engines": {
-    "node": ">=14.16"
-  },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules/",
-      "<rootDir>/lib/"
-    ]
+    "coverage": "tsbb test --coverage --bail",
+    "prepare": "husky install",
+    "version": "lerna version --exact --force-publish --no-push --no-git-tag-version",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "remove": "npm run clean && lerna exec \"rm -rf package-lock.json\" --scope @wyxin/baijiaxing/* --scope website",
+    "clean": "lerna clean --yes"
   },
   "lint-staged": {
-    "*.{js,ts,json}": "prettier --write"
+    "*.{js,jsx,ts,tsx,less,md,json}": [
+      "prettier --write"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/core/src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "testMatch": [
+      "<rootDir>/test/*.{ts,tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/?!(.*)"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/core/lib/"
+    ]
+  },
+  "workspaces": [
+    "website",
+    "core"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
   },
   "devDependencies": {
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.0",
-    "prettier": "^3.0.0",
+    "@kkt/less-modules": "^7.5.2",
+    "@kkt/ncc": "^1.0.15",
+    "compile-less-cli": "^1.8.13",
+    "husky": "^8.0.1",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.6.0",
+    "jest-environment-node": "^29.5.0",
+    "jest-watch-typeahead": "^2.2.2",
+    "lerna": "^7.1.4",
+    "lint-staged": "^14.0.0",
+    "prettier": "^3.0.1",
     "tsbb": "^4.1.14"
   }
 }
